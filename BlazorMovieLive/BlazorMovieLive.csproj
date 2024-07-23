@@ -21,6 +21,7 @@
     <None Remove="Components\" />
     <None Remove="Components\Layout\" />
     <None Remove="Components\Pages\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
@@ -28,6 +29,7 @@
     <Folder Include="Components\Pages\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\js\" />

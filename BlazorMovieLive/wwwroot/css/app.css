@@ -1,11 +1,11 @@
-﻿:root{
+﻿:root {
     /* fonts */
     --cf-title-font: 'Bebas Neue', sans-serif;
     --cf-body-font: 'Montserrat', sans-serif;
 
     /* Color */
     --cf-dark-color: #212121;
-    --cf-light-color: $deeefb;
+    --cf-light-color: #deeefb;
 
     /* text styles*/
     --cf-title-color: var(--cf-dark-color);

@@ -1,6 +1,6 @@
-﻿.footerStyle{
+﻿.footerStyle {
     background-color: var(--cf-theme-900);
-    color: lightyellow;
+    color: rgb(255,255,255);
 }
 
 .footerStyle a{
