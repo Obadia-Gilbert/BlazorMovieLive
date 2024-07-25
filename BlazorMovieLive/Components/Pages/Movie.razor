@@ -1,0 +1,29 @@
+﻿@page "/movie/{id:int}"
+@inject TMDBClient TMDB 
+
+<h3>Movie</h3>
+
+@if (movieDetails is not null)
+{
+    <h1>@movieDetails.Title</h1>
+    <p>@movieDetails.Overview</p>
+}
+else
+{
+    <p>Movie Still Loading</p>
+}
+
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public MovieDetails? movieDetails { get; set; }
+
+    protected override async  Task OnInitializedAsync()
+    {
+        movieDetails = await TMDB.GetMovieDetailsAsync(Id);
+    }
+}
+
