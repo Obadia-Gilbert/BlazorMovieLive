@@ -16,14 +16,18 @@ namespace BlazorMovieLive.Services
 			_httpClient.DefaultRequestHeaders.Authorization = new("Bearer",apiKey);
 		}
 
-		public async Task<PopularMoviePagedResponse?> GetPopularMovieAsync()
-		{   
-			return await _httpClient.GetFromJsonAsync<PopularMoviePagedResponse>("movie/popular");
+		public async Task<PopularMoviePagedResponse?> GetPopularMovieAsync(int page = 1)
+		{
+			if (page < 1) page = 1;
+
+			if (page > 500) page = 500;
+
+			return await _httpClient.GetFromJsonAsync<PopularMoviePagedResponse>($"movie/popular?page={page}");
 		}
 
 		public async Task<MovieDetails?> GetMovieDetailsAsync(int id)
 		{
-			return await _httpClient.GetFromJsonAsync<MovieDetails>($"movie/{id}");
+			return await  _httpClient.GetFromJsonAsync<MovieDetails>($"movie/{id}");
 		}
 	}
 }

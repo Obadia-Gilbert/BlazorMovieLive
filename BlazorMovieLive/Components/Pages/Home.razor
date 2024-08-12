@@ -25,12 +25,12 @@
         <div class="row row-cols-2 row-cols-lg-4 g-3 row-cols-xl-5 justify-content-center justify-content-md-start">
             @if (movies is not null)
             {
-                    @foreach (PopularMovie movie in movies.Results)
-                    {
-                        <div class="col">
-                            <MovieCard  Movie="movie"/>
-                        </div>
-                    }
+                @foreach (PopularMovie movie in movies.Results)
+                {
+                    <div class="col">
+                        <MovieCard Movie="movie" />
+                    </div>
+                }
             }
             else
             {
@@ -43,20 +43,20 @@
             }
         </div>
     </div>
+    @if (movies?.TotalPages > 1)
+     {
+        <div class="my-3">
+             <Paginator CurrentPage="movies.Page"
+                 TotalPages="movies.TotalPages > 500 ? 500 : movies.TotalPages"
+             />
+        </div>
+     }
 </div>
-
 @code{
     private PopularMoviePagedResponse? movies;
 
     protected override async Task OnInitializedAsync()
     {
-        try
-        {
-            movies = await TMDB.GetPopularMovieAsync();
-        }
-        catch(HttpRequestException ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
+        movies = await TMDB.GetPopularMovieAsync(2);
     }
 }
